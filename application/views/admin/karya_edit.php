@@ -22,6 +22,12 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
+                <label class="title">SEMESTER <small class="text-danger">*</small> </label>
+                <input type="hidden" class="form-control" name="ID_SEMESTER" maxlength="50" value="<?= $ID_SEM;?>" required>
+                <input type="text" class="form-control" value="<?= $semester_aktif;?>" required readonly>
+                <small class="text-muted">Ubah semester aktif di pengaturan.</small>
+              </div>
+              <div class="form-group">
                 <label class="title">Judul Karya <small class="text-danger">*</small> </label>
                 <input type="text" class="form-control" name="JUDUL" maxlength="50" value="<?= $karya->JUDUL;?>" required>
                 <small class="text-muted">Max 50 karakter</small>
