@@ -15,6 +15,7 @@
         <div class="card-header">
           Isi data karya - Kategori <b class="text-info"><?= $kategori->KATEGORI;?></b>
           <button type="submit" class="btn btn-primary btn-sm float-right mr-2">Upload Karya</button>
+          <input type="hidden" name="IS_VERIF" value="<?php echo ($this->session->userdata('ROLE') != 1? true : false)?>">
         </div>
         <div class="card-body">
           <div class="row">

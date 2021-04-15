@@ -31,6 +31,7 @@
                 <th>DOSPEM</th>
                 <th>LINK VIDEO</th>
                 <th>LINK DEMO</th>
+                <th>STATUS</th>
               </tr>
             </thead>
             <tbody>
@@ -40,10 +41,17 @@
                 <!-- </form> -->
                 <td><?= $key->ID_KARYA;?></td>
                 <td>
-                  <a href="<?php echo site_url('DetailKarya/'.$key->ID_KARYA);?>" target="_blank" class="btn btn-sm btn-secondary" style="font-size: 12px !important">live preview</a>
+                  <?php if($key->IS_VERIF == true){?>
+                    <a href="<?php echo site_url('DetailKarya/'.$key->ID_KARYA);?>" target="_blank" class="btn btn-sm btn-secondary" style="font-size: 12px !important">live preview</a>
+                  <?php } else{?>
+                    <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#verif<?= $key->ID_KARYA;?>"><i class="fa fa-check fa-sm"></i></button>
+                  <?php }?>
+                  
                   <a href="<?php echo site_url('LihatKarya/'.$key->ID_KARYA);?>" class="btn btn-sm btn-light"><i class="fa fa-eye fa-sm"></i></a>
-                  <a href="<?php echo site_url('EditKarya/'.$key->ID_KARYA);?>" class="btn btn-sm btn-info"><i class="fa fa-edit fa-sm"></i></a>
-                  <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapus<?= $key->ID_KARYA;?>"><i class="fa fa-trash fa-sm"></i></button>
+                  <?php if ($this->session->userdata('ROLE') != 1) { ?>
+                    <a href="<?php echo site_url('EditKarya/'.$key->ID_KARYA);?>" class="btn btn-sm btn-info"><i class="fa fa-edit fa-sm"></i></a>
+                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapus<?= $key->ID_KARYA;?>"><i class="fa fa-trash fa-sm"></i></button>
+                  <?php }?>
                 </td>
                 <td><?= $key->JUDUL;?></td>
                 <td><span class="badge <?php $a = rand(1, 4); if($a == 1){ echo 'badge-primary';}elseif($a == 2){echo 'badge-info'; }elseif($a == 3){echo 'badge-warning';}else{ echo 'badge-orange'; }?>"><?= $key->PRODI;?></span></td>
@@ -51,6 +59,7 @@
                 <td><?= $key->DOSPEM;?></td>
                 <td><a href="<?= $key->LINK_VIDEO;?>" class="btn btn-danger btn-sm" target="_blank"><?= $key->LINK_VIDEO;?></a></td>
                 <td><a href="<?= $key->LINK_DEMO;?>" class="btn btn-success btn-sm" target="_blank"><?= $key->LINK_DEMO;?></a></td>
+                <td><span class="badge <?php echo ($key->IS_VERIF == true? 'badge-success' : 'badge-warning')?>"><?php echo ($key->IS_VERIF == true? 'Terverifikasi' : 'Belum Terverif')?></span></td>
               </tr>
               <!-- MODAL hapus -->
               <div id="anggota<?= $key->ID_KARYA;?>" class="modal fade" role="dialog" tabindex="-1" >
@@ -110,6 +119,35 @@
                           <div class="modal-footer">
                             <button type="button" class="btn btn-light btn-sm" data-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-danger btn-sm">Hapus data</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- MODAL verif -->
+                <div id="verif<?= $key->ID_KARYA;?>" class="modal fade" role="dialog" tabindex="-1" >
+                  <div class="modal-dialog" role="document">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header bg-success">
+                        <h5 class="modal-title text-white">Verifikasi Karya - <b><?= substr($key->JUDUL, 0, 15);?>...</b></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        <form class="form-horizontal" action="<?php echo site_url('Karya/Verif/'.$kategori->ID_KATEGORI);?>" method="post">
+                          <input type="hidden" name="ID_KARYA" value="<?= $key->ID_KARYA;?>">
+                          <input type="hidden" name="JUDUL" value="<?= $key->JUDUL;?>">
+
+                          <p>Apakah anda yakin akan verifikasi karya  <b><?= $key->JUDUL;?></b> </p>
+
+                          <!-- Modal footer -->
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-light btn-sm" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-success btn-sm">Verif data</button>
                           </div>
                         </form>
                       </div>

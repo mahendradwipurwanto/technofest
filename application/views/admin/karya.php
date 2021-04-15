@@ -6,7 +6,7 @@
 <hr>
 
 <div class="row mb-4">
-  <div class="col-md-8">
+  <div class="col<?php echo ($this->session->userdata('ROLE') != 1? '-md-8' : '' )?>"">
     <div class="row mb-4">
       <?php foreach ($kategori as $key) { ?>
       <div class="col-md-3">
@@ -21,15 +21,17 @@
       <?php }?>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="card card-info shadow-sm">
-      <div class="card-header">
-        Notifikasi
-      </div>
-      <div class="card-body">
-        <small class="mb-0">Anda dapat menambahkan kategori karya di: Pengaturan > Kategori, atau dapat meng klik <a href="<?php echo site_url('Pengaturan/Kategori');?>" class="text-primary text-none">link ini</a></small><br>
-        <small class="mb-0">Anda dapat mendownload semua foto karya dalam bentuk RAR di: File Manager Karya, atau dapat meng klik <a href="<?php echo site_url('Browser');?>" target="_blank" class="text-primary text-none">link ini</a></small>
+  <?php if ($this->session->userdata('ROLE') != 1) { ?>
+    <div class="col-md-4">
+      <div class="card card-info shadow-sm">
+        <div class="card-header">
+          Notifikasi
+        </div>
+        <div class="card-body">
+          <small class="mb-0">Anda dapat menambahkan kategori karya di: Pengaturan > Kategori, atau dapat meng klik <a href="<?php echo site_url('Pengaturan/Kategori');?>" class="text-primary text-none">link ini</a></small><br>
+          <small class="mb-0">Anda dapat mendownload semua foto karya dalam bentuk RAR di: File Manager Karya, atau dapat meng klik <a href="<?php echo site_url('Browser');?>" target="_blank" class="text-primary text-none">link ini</a></small>
+        </div>
       </div>
     </div>
-  </div>
+  <?php }?>
 </div>

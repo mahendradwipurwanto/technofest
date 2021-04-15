@@ -50,20 +50,24 @@
   <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
     <a class="navbar-brand" href="<?php echo base_url();?>">TechnoFest</a>
     <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
-    dev mode
-    <div class="onoffswitch">
-      <input type="checkbox" name="devmode" class="onoffswitch-checkbox" id="dev" tabindex="0" <?= ($dev_mode == 1) ? "checked" : "";?>>
-      <label class="onoffswitch-label mb-0 ml-2" for="dev">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-      </label>
-    </div>
+    <?php if ($this->session->userdata('ROLE') != 1) { ?>
+      dev mode
+      <div class="onoffswitch">
+        <input type="checkbox" name="devmode" class="onoffswitch-checkbox" id="dev" tabindex="0" <?= ($dev_mode == 1) ? "checked" : "";?>>
+        <label class="onoffswitch-label mb-0 ml-2" for="dev">
+          <span class="onoffswitch-inner"></span>
+          <span class="onoffswitch-switch"></span>
+        </label>
+      </div>
+    <?php }?>
     <ul class="navbar-nav align-items-center ml-auto">
+    <?php if ($this->session->userdata('ROLE') != 1) { ?>
       <li class="nav-item dropdown no-caret mr-3 d-none d-md-inline">
         <a href="<?php echo site_url('Pengaturan/Semester');?>" class="nav-link" role="button">
           <div class="d-none d-md-inline font-weight-500"> <span class="badge badge-success"><?= $semester_aktif;?></span> </div>
         </a>
       </li>
+    <?php }?>
       <li class="nav-item dropdown no-caret mr-3 d-none d-md-inline">
         <a href="<?php echo base_url();?>" class="nav-link" target="_blank" role="button">
           <div class="d-none d-md-inline font-weight-500">Landing Page</div>
@@ -138,6 +142,7 @@
       <nav class="sidenav shadow-right sidenav-light">
         <div class="sidenav-menu">
           <div class="nav accordion" id="accordionSidenav">
+            <?php if ($this->session->userdata('ROLE') != 1) { ?>
             <div class="sidenav-menu-heading">Dashboard</div>
             <a class="nav-link" href="<?php echo site_url('Dashboard');?>">
               <div class="nav-link-icon"><i data-feather="trello"></i></div>
@@ -151,6 +156,7 @@
               <div class="nav-link-icon"><i data-feather="trello"></i></div>
               Pengaturan
             </a>
+            <?php } ?>
 
             <?php if ($ID_SEM != null) { ?>
               <div class="sidenav-menu-heading">Karya</div>

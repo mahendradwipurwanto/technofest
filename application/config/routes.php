@@ -60,6 +60,7 @@ $route['UploadKarya/(:any)']     = 'Karya/Tambah/$1';
 $route['EditKarya/(:any)']       = 'Karya/Edit/$1';
 $route['LihatKarya/(:any)']      = 'Karya/Lihat/$1';
 $route['UploadKarya']            = 'Karya/AwalUpload';
+$route['VerifKarya']             = 'Karya/Verif';
 $route['Browser']                = 'Dashboard/Browser';
 $route['Koordinator']            = 'Dashboard/Koordinator';
 

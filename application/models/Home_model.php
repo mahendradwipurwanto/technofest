@@ -47,7 +47,7 @@ class Home_model extends CI_Model {
 	}
 
 	public function karya(){
-		$query = $this->db->query("SELECT * FROM TB_KARYA a LEFT JOIN TB_PRODI b ON a.PRODI = b.ID_PRODI LEFT JOIN TB_KATEGORI c ON a.ID_KATEGORI = c.ID_KATEGORI WHERE a.ID_SEMESTER IN (SELECT ID_SEMESTER FROM TB_SEMESTER WHERE STATUS =1) ORDER BY a.LOG_TIME DESC");
+		$query = $this->db->query("SELECT * FROM TB_KARYA a LEFT JOIN TB_PRODI b ON a.PRODI = b.ID_PRODI LEFT JOIN TB_KATEGORI c ON a.ID_KATEGORI = c.ID_KATEGORI WHERE a.IS_VERIF = true AND a.ID_SEMESTER IN (SELECT ID_SEMESTER FROM TB_SEMESTER WHERE STATUS =1) ORDER BY a.LOG_TIME DESC");
 		if($query->num_rows() > 0){
 			return $query->result();
 		}else {

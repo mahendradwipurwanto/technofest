@@ -37,8 +37,10 @@
                 <td>
                   <a href="<?php echo site_url('DetailKarya/'.$key->ID_KARYA);?>" target="_blank" class="btn btn-sm btn-secondary" style="font-size: 12px !important">live preview</a>
                   <a href="<?php echo site_url('LihatKarya/'.$key->ID_KARYA);?>"data-toggle="tooltip" data-placement="top" title="" data-original-title="Detail karya" class="btn btn-sm btn-light"><i class="fa fa-eye fa-sm"></i></a>
-                  <a href="<?php echo site_url('EditKarya/'.$key->ID_KARYA);?>" class="btn btn-sm btn-info"><i class="fa fa-edit fa-sm"></i></a>
-                  <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapus<?= $key->ID_KARYA;?>"><i class="fa fa-trash fa-sm"></i></button>
+                  <?php if ($this->session->userdata('ROLE') != 1) { ?>
+                    <a href="<?php echo site_url('EditKarya/'.$key->ID_KARYA);?>" class="btn btn-sm btn-info"><i class="fa fa-edit fa-sm"></i></a>
+                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapus<?= $key->ID_KARYA;?>"><i class="fa fa-trash fa-sm"></i></button>
+                  <?php } ?>
                 </td>
                 <td><?= $key->JUDUL;?></td>
                 <td><span class="badge <?php $a = rand(1, 4); if($a == 1){ echo 'badge-primary';}elseif($a == 2){echo 'badge-info'; }elseif($a == 3){echo 'badge-warning';}else{ echo 'badge-orange'; }?>"><?= $key->PRODI;?></span></td>

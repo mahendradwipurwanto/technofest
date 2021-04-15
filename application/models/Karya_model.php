@@ -117,6 +117,7 @@ class Karya_model extends CI_Model {
 		$DOSPEM			= $this->input->post('DOSPEM');
 		$LINK_DEMO	= $this->input->post('LINK_DEMO');
 		$LINK_VIDEO	= $this->input->post('LINK_VIDEO');
+		$IS_VERIF = $this->input->post('IS_VERIF');
 
 		$data = array(
 			'ID_KARYA' 		=> $ID_KARYA,
@@ -128,6 +129,7 @@ class Karya_model extends CI_Model {
 			'DOSPEM'			=> $DOSPEM,
 			'LINK_DEMO' 	=> $LINK_DEMO,
 			'LINK_VIDEO' 	=> $LINK_VIDEO,
+			'IS_VERIF' 	=> $IS_VERIF,
 		);
 		$this->db->insert('TB_KARYA', $data);
 		$cek =  ($this->db->affected_rows() != 1) ? false : true;
@@ -242,6 +244,11 @@ class Karya_model extends CI_Model {
 		$this->db->delete('TB_KARYA');
 		return ($this->db->affected_rows() != 1) ? false : true;
 
+	}
+
+	public function verif_karya(){
+		$ID_KARYA = $this->input->post('ID_KARYA');
+		$this->db->where('ID_KARYA', $ID_KARYA)->update('TB_KARYA', ['IS_VERIF' => true]);
 	}
 
 	function hapus_karya_pilih() {

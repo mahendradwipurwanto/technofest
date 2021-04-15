@@ -46,10 +46,12 @@ class Masuk extends CI_Controller {
 					}elseif ($pengguna->ROLE == 1) {
 						if ($this->session->userdata('redirect')) {
 							$this->session->set_flashdata('success', 'Selamat datang kembali, silahkan melanjutkan aktivitas anda !!');
-							redirect($this->session->userdata('redirect'));
+							// redirect($this->session->userdata('redirect'));
+							redirect('UploadKarya');
 						} else {
 							$this->session->set_flashdata('success', 'Selamat Datang');
-							header('location:' . base_url());
+							redirect('UploadKarya');
+							// header('location:' . base_url());
 						}
 					}
 				}else{

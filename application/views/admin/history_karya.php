@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col<?php echo ($this->session->userdata('ROLE') != 1? '-md-8' : '' )?>">
     <div class="card shadow-sm">
       <div class="card-header">Daftar Semester
       </div>
@@ -29,10 +29,12 @@
         </div>
       </div>
     </div>
+    <?php if ($this->session->userdata('ROLE') != 1) { ?>
     <div class="col-md-4">
       <div class="alert alert-info shadow-sm">
         <small class="mb-0">Anda dapat menambahkan dan mengatur status semester di: Pengaturan > Semester.</small><br>
         <small class="mb-0">Anda dapat menambahkan kategori karya di: Pengaturan > Kategori, atau dapat meng klik <a href="<?php echo site_url('Pengaturan/Kategori');?>" class="text-primary text-none">link ini</a></small>
       </div>
     </div>
+    <?php }?>
   </div>

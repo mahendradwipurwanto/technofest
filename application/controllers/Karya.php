@@ -118,7 +118,7 @@ class Karya extends CI_Controller {
 			$data['controller']	= $this;
 			$data['kategori'] = $this->karya_model->get_kategori_one($ID_KATEGORI);
 			$data['karya'] 		= $this->karya_model->get_karya($ID_KATEGORI);
-
+			// print_r($data['karya']);
 			$this->template_backend->view('admin/karya_daftar', $data);
 		}
 	}
@@ -396,6 +396,18 @@ class Karya extends CI_Controller {
 
 		if ($this->karya_model->hapus_karya() == TRUE){
 			$this->session->set_flashdata('success', 'Berhasil menghapus data karya: '.$JUDUL.' !!');
+			header('location:' . site_url('DaftarKarya/'.$ID_KATEGORI));
+		}else{
+			$this->session->set_flashdata('alert', 'Terjadi kesalahan saat menghapus data, coba lagi beberapa saat nanti !!');
+			header('location:' . site_url('DaftarKarya/'.$ID_KATEGORI));
+		}
+	}
+	function verif($ID_KATEGORI){
+
+		$JUDUL = $this->input->post('JUDUL');
+
+		if ($this->karya_model->verif_karya() == TRUE){
+			$this->session->set_flashdata('success', 'Berhasil verifikasi data karya: '.$JUDUL.' !!');
 			header('location:' . site_url('DaftarKarya/'.$ID_KATEGORI));
 		}else{
 			$this->session->set_flashdata('alert', 'Terjadi kesalahan saat menghapus data, coba lagi beberapa saat nanti !!');
