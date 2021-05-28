@@ -71,6 +71,8 @@ $route['Pengguna']               = 'Dashboard/dataPengguna';
 
 $route['Daftar']                 = 'Masuk/Daftar';
 $route['Keluar']                 = 'Masuk/logout';
+$route['Lupa-pass']              = 'Masuk/lupa_pass';
+$route['Recovery-password/(:any)']      = 'Masuk/ubah_pass/$1';
 
 $route['coming-soon']            = 'Masuk/dev_mode';
 

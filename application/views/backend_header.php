@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="STIKI TECHNOFEST merupakan pameran produk Tugas Akhir, Tugas Akhir Mata Kuliah, Magang, Lomba, Proyek Individu dan Proyek Karya Kelompok Bidang Minat dari Program studi Teknik Informatika, Sistem Informatika dan Manajemen Informatika." />
+  <meta name="description" content="STIKI <?= $judul ?> merupakan pameran produk Tugas Akhir, Tugas Akhir Mata Kuliah, Magang, Lomba, Proyek Individu dan Proyek Karya Kelompok Bidang Minat dari Program studi Teknik Informatika, Sistem Informatika dan Manajemen Informatika." />
   <meta name="author" content="STIKI Malang colaboration by CreativeCrew Since 2013" />
-  <title>ADMIN - TechnoFest</title>
-  <link rel="icon" type="image/x-icon" href="<?php echo base_url();?>berkas/file/home/logo.png" />
+  <title>ADMIN - <?= $judul ?></title>
+  <link rel="icon" type="image/x-icon" href="<?php echo base_url();?>berkas/karya/logo/<?= $logo ?>" />
 
   <link href="<?php echo base_url();?>assets/backend/css/styles.css" rel="stylesheet" />
   <link href="<?php echo base_url();?>assets/backend/css/custom.css" rel="stylesheet" />
@@ -48,7 +48,7 @@
 </head>
 <body class="nav-fixed">
   <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-    <a class="navbar-brand" href="<?php echo base_url();?>">TechnoFest</a>
+    <a class="navbar-brand" href="<?php echo base_url();?>"><?= $judul ?></a>
     <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
     <?php if ($this->session->userdata('ROLE') != 1) { ?>
       dev mode
@@ -73,6 +73,7 @@
           <div class="d-none d-md-inline font-weight-500">Landing Page</div>
         </a>
       </li>
+      <?php if ($this->session->userdata('ROLE') == 0) { ?>
       <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
         <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
         <?php if($ID_SEM == null || $count_karya == 0 || $count_agenda == 0 || $dev_mode == 1) { ?><span class="badge badge-info">!</span><?php }?>
@@ -119,6 +120,7 @@
           <?php }?>
         </div>
       </li>
+    <?php }?>
       <li class="nav-item dropdown no-caret mr-2 dropdown-user">
         <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"/></a>
         <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
@@ -160,6 +162,7 @@
 
             <?php if ($ID_SEM != null) { ?>
               <div class="sidenav-menu-heading">Karya</div>
+              <?php if ($this->session->userdata('ROLE') == 0) { ?>
               <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                 <div class="nav-link-icon"><i data-feather="grid"></i></div>
                 Data Karya
@@ -175,6 +178,7 @@
                   </a>
                 </nav>
               </div>
+            <?php }?>
               <a class="nav-link" href="<?php echo site_url('UploadKarya');?>">
                 <div class="nav-link-icon"><i data-feather="shopping-bag"></i></div>
                 Upload Karya

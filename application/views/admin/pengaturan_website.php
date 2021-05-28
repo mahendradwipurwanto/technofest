@@ -12,11 +12,37 @@
       </div>
       <div class="card-body">
 
-        <form action="<?php echo site_url('Pengaturan/ubah_website');?>" method="post">
+        <form action="<?php echo site_url('Pengaturan/ubah_website');?>" method="post" enctype="multipart/form-data">
 
           <div class="form-group">
-            <label class="title">Tentang</label>
-            <textarea name="tentang" class="form-control" rows="3" required><?php echo $tentang;?></textarea>
+            <label class="title">Judul Utama<small class="text-danger">*</small> </label>
+            <input type="text" name="judul" maxlength="21" class="form-control" value="<?php echo $judul; ?>" required>
+            <small class="text-muted">Maks. 21 characters</small>
+          </div>
+
+          <div class="form-group">
+            <label class="title">Tentang<small class="text-danger">*</small></label>
+            <textarea name="tentang" class="form-control" rows="4" required><?php echo $tentang;?></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="title">Tanggal Acara Berlangsung<small class="text-danger">*</small> </label>
+            <input type="text" name="tanggal_mulai" class="form-control" value="<?php echo $tanggal_mulai; ?>" required>
+          </div>
+
+          <div class="form-group">
+            <label class="title">Tanggal Acara Berakhir<small class="text-danger">*</small> </label>
+            <input type="text" name="tanggal_akhir" class="form-control" value="<?php echo $tanggal_akhir; ?>" required>
+          </div>
+
+          <div class="form-group">
+            <label class="title">Logo Technofest<small class="text-danger">*</small> </label>
+                  <input type="file" class="form-control-file" name="logo"  accept="image/*">
+          </div>
+
+          <div class="form-group">
+            <label class="title">Logo yang digunakan sekarang<small class="text-danger">*</small> </label>
+            <h4> <a href="<?= base_url()?>berkas/karya/logo/<?php echo $logo; ?>" target="_blank"><?php echo $logo; ?></a></h4>
           </div>
 
           <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#ubah">Simpan Perubahan</button>

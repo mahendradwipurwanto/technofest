@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="STIKI TECHNOFEST merupakan pameran produk Tugas Akhir, Tugas Akhir Mata Kuliah, Magang, Lomba, Proyek Individu dan Proyek Karya Kelompok Bidang Minat dari Program studi Teknik Informatika, Sistem Informatika dan Manajemen Informatika." />
+  <meta name="description" content="STIKI <?= $judul ?> merupakan pameran produk Tugas Akhir, Tugas Akhir Mata Kuliah, Magang, Lomba, Proyek Individu dan Proyek Karya Kelompok Bidang Minat dari Program studi Teknik Informatika, Sistem Informatika dan Manajemen Informatika." />
   <meta name="author" content="STIKI Malang colaboration by CreativeCrew Since 2013" />
-  <title>Coming Soon - Technofest</title>
-  <link rel="icon" type="image/x-icon" href="<?php echo base_url();?>berkas/file/home/logo.png" />
+  <title>Coming Soon - <?= $judul ?></title>
+  <link rel="icon" type="image/x-icon" href="<?php echo base_url();?>berkas/karya/logo/<?= $logo ?>" />
 
   <link href="<?php echo base_url();?>assets/backend/css/styles.css" rel="stylesheet" />
   <link href="<?php echo base_url();?>assets/backend/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -41,7 +41,7 @@
       <footer class="footer mt-auto footer-light">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-6 small">Copyright &#xA9; TechnoFest 2021 supported by Nestivent.org</div>
+            <div class="col-md-6 small">Copyright &#xA9; STIKI 2021 supported by Nestivent.org</div>
           </div>
         </div>
       </footer>

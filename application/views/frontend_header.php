@@ -3,7 +3,7 @@
 <head>
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta name="description" content="STIKI TECHNOFEST merupakan pameran produk Tugas Akhir, Tugas Akhir Mata Kuliah, Magang, Lomba, Proyek Individu dan Proyek Karya Kelompok Bidang Minat dari Program studi Teknik Informatika, Sistem Informatika dan Manajemen Informatika." />
+  <meta name="description" content="STIKI <?= $judul ?> merupakan pameran produk Tugas Akhir, Tugas Akhir Mata Kuliah, Magang, Lomba, Proyek Individu dan Proyek Karya Kelompok Bidang Minat dari Program studi Teknik Informatika, Sistem Informatika dan Manajemen Informatika." />
   <meta name="author" content="STIKI Malang colaboration by CreativeCrew Since 2013" />
 
 	<!-- Stylesheets
@@ -28,8 +28,8 @@
 
 	<!-- Document Title
 	============================================= -->
-	<title>TechnoFest</title>
-  <link rel="icon" type="image/x-icon" href="<?php echo base_url();?>berkas/file/home/logo.png" />
+	<title><?= $judul ?></title>
+  <link rel="icon" type="image/x-icon" href="<?php echo base_url();?>berkas/karya/logo/<?= $logo ?>" />
 
 </head>
 
@@ -49,7 +49,7 @@
 						<!-- Logo
 						============================================= -->
 						<div id="logo" class="mr-lg-0">
-							<a href="<?php echo base_url();?>"><img src="<?php echo base_url();?>berkas/file/home/logo.png" alt="TechnoFest Logo" style="padding-top: 10px;"></a>
+							<a href="<?php echo base_url();?>"><img src="<?php echo base_url();?>berkas/karya/logo/<?= $logo ?>" alt="<?= $judul ?> Logo" style="padding-top: 10px;"></a>
 						</div><!-- #logo end -->
 
 						<div id="primary-menu-trigger">

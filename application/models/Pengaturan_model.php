@@ -2,15 +2,15 @@
 
 class Pengaturan_model extends CI_Model {
 
-public function dev_mode($status){
-  $data = array(
-    'VALUE' => $status,
-  );
+  public function dev_mode($status){
+    $data = array(
+      'VALUE' => $status,
+    );
 
-  $this->db->where('NAME', 'dev_mode');
-  $this->db->update('TB_PENGATURAN', $data);
-  return ($this->db->affected_rows() != 1) ? false : true;
-}
+    $this->db->where('NAME', 'dev_mode');
+    $this->db->update('TB_PENGATURAN', $data);
+    return ($this->db->affected_rows() != 1) ? false : true;
+  }
 
   //SEMESTER
   public function get_semester(){
@@ -294,17 +294,68 @@ public function dev_mode($status){
     }
   }
 
-  public function ubah_website(){
+  public function get_judul(){
+    $query = $this->db->query("SELECT VALUE FROM TB_PENGATURAN WHERE NAME = 'judul'");
+    if ($query->num_rows() > 0) {
+      return $query->row()->VALUE;
+    }else {
+      return FALSE;
+    }
+  }
+
+  public function get_tanggal_mulai(){
+    $query = $this->db->query("SELECT VALUE FROM TB_PENGATURAN WHERE NAME = 'tanggal_mulai'");
+    if ($query->num_rows() > 0) {
+      return $query->row()->VALUE;
+    }else {
+      return FALSE;
+    }
+  }
+
+  public function get_tanggal_akhir(){
+    $query = $this->db->query("SELECT VALUE FROM TB_PENGATURAN WHERE NAME = 'tanggal_akhir'");
+    if ($query->num_rows() > 0) {
+      return $query->row()->VALUE;
+    }else {
+      return FALSE;
+    }
+  }
+
+  public function get_logo(){
+    $query = $this->db->query("SELECT VALUE FROM TB_PENGATURAN WHERE NAME = 'logo'");
+    if ($query->num_rows() > 0) {
+      return $query->row()->VALUE;
+    }else {
+      return FALSE;
+    }
+  }
+
+  public function ubah_website($logo){
 
     $tentang        = $this->input->post('tentang');
+    $judul          = $this->input->post('judul');
+    $tanggal_mulai  = $this->input->post('tanggal_mulai');
+    $tanggal_akhir  = $this->input->post('tanggal_akhir');
 
-    $data = array(
-      'VALUE'       => $tentang
-    );
+    // $data = array(
+    //   'VALUE'       => $tentang
+    // );
 
-    $this->db->where('NAME', 'tentang');
-    $this->db->update('TB_PENGATURAN', $data);
-    return ($this->db->affected_rows() != 1) ? false : true;
+    // $this->db->where('NAME', 'tentang');
+    // $this->db->update('TB_PENGATURAN', $data);
+
+    $query = $this->db->query("UPDATE TB_PENGATURAN SET VALUE = '$tentang' WHERE NAME = 'tentang'");
+    $query2 = $this->db->query("UPDATE TB_PENGATURAN SET VALUE = '$judul' WHERE NAME = 'judul'");
+    $query3 = $this->db->query("UPDATE TB_PENGATURAN SET VALUE = '$tanggal_mulai' WHERE NAME = 'tanggal_mulai'");
+    $query4 = $this->db->query("UPDATE TB_PENGATURAN SET VALUE = '$tanggal_akhir' WHERE NAME = 'tanggal_akhir'");
+    if ($logo != null || isset($logo)) {
+      $query4 = $this->db->query("UPDATE TB_PENGATURAN SET VALUE = '$logo' WHERE NAME = 'logo'");
+    }
+
+    return TRUE;
+
+
+    // return ($this->db->affected_rows() != 1) ? false : true;
   }
 
 }

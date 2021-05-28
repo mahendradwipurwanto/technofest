@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content= ""/>
   <meta name="author" content />
-  <title>Dev Login - TechnoFest</title>
-  <link rel="icon" type="image/x-icon" href="<?php echo base_url();?>assets/backend/img/logo/favicon.png" />
+  <title>Dev Login - <?= $judul ?></title>
+  <link rel="icon" type="image/x-icon" href="<?php echo base_url();?>berkas/karya/logo/<?= $logo ?>" />
 
   <link href="<?php echo base_url();?>assets/backend/css/styles.css" rel="stylesheet" />
   <link href="<?php echo base_url();?>assets/backend/css/custom.css" rel="stylesheet" />
@@ -93,7 +93,7 @@
       <footer class="footer mt-auto footer-dark">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-6 small">Copyright &#xA9; TechnoFest 2021 supported by Nestivent.org</div>
+            <div class="col-md-6 small">Copyright &#xA9; <?= $judul ?> 2021 supported by Nestivent.org</div>
             <div class="col-md-6 text-md-right small">
             </div>
           </div>

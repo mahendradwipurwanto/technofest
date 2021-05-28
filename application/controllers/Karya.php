@@ -22,6 +22,9 @@ class Karya extends CI_Controller {
 
 		$data['kategori'] = $this->karya_model->get_kategori();
 
+		$data['logo'] = $this->pengaturan_model->get_logo();
+		$data['judul'] = $this->pengaturan_model->get_judul();
+
 		$this->load->view('frontend_karya', $data);
 		$this->load->view('karya', $data);
 		$this->load->view('frontend_footer', $data);
@@ -145,6 +148,10 @@ class Karya extends CI_Controller {
 
 				// $this->home_model->kunjungi($KODE_USER, $ID_KARYA);
 
+
+				$data['logo'] = $this->pengaturan_model->get_logo();
+				$data['judul'] = $this->pengaturan_model->get_judul();
+				
 				$this->load->view('frontend_karya', $data);
 				$this->load->view('karya_detail', $data);
 				$this->load->view('frontend_footer', $data);
@@ -410,7 +417,7 @@ class Karya extends CI_Controller {
 			$this->session->set_flashdata('success', 'Berhasil verifikasi data karya: '.$JUDUL.' !!');
 			header('location:' . site_url('DaftarKarya/'.$ID_KATEGORI));
 		}else{
-			$this->session->set_flashdata('alert', 'Terjadi kesalahan saat menghapus data, coba lagi beberapa saat nanti !!');
+			$this->session->set_flashdata('alert', 'Terjadi kesalahan saat verifikasi data, coba lagi beberapa saat nanti !!');
 			header('location:' . site_url('DaftarKarya/'.$ID_KATEGORI));
 		}
 	}

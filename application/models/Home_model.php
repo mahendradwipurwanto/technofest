@@ -12,6 +12,20 @@ class Home_model extends CI_Model {
 		return $query->row()->VALUE;
 	}
 
+	public function judul(){
+		$query = $this->db->query("SELECT VALUE FROM TB_PENGATURAN WHERE NAME = 'judul'");
+		return $query->row()->VALUE;
+	}
+
+	public function tanggal_mulai(){
+		$query = $this->db->query("SELECT VALUE FROM TB_PENGATURAN WHERE NAME = 'tanggal_mulai'");
+		return $query->row()->VALUE;
+	}
+
+	public function tanggal_akhir(){
+		$query = $this->db->query("SELECT VALUE FROM TB_PENGATURAN WHERE NAME = 'tanggal_akhir'");
+		return $query->row()->VALUE;
+	}
 
 	public function c_karya(){
 		$query = $this->db->query("SELECT * FROM TB_KARYA WHERE ID_SEMESTER IN (SELECT ID_SEMESTER FROM TB_SEMESTER WHERE STATUS =1)");

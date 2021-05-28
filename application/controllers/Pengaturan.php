@@ -201,14 +201,47 @@ class Pengaturan extends CI_Controller {
 	//WEBSITE
 
 	public function Website(){
+		$data['judul']     		= $this->pengaturan_model->get_judul();
 		$data['tentang']     	= $this->pengaturan_model->get_tentang();
+		$data['tanggal_mulai']	= $this->pengaturan_model->get_tanggal_mulai();
+		$data['tanggal_akhir']	= $this->pengaturan_model->get_tanggal_akhir();
+		$data['logo']					= $this->pengaturan_model->get_logo();
 		$data['controller']   = $this;
 
 		$this->template_backend->view('admin/pengaturan_website', $data);
 	}
 
 	public function ubah_website(){
-		if ($this->pengaturan_model->ubah_website() == TRUE) {
+		$filename = null;
+		if (!empty($_FILES['logo']['name'])) {
+			// CREATE FILENAME
+			$path  = $_FILES['logo']['name'];
+			$ext   = pathinfo($path, PATHINFO_EXTENSION);
+
+			$time			= time();
+			$filename	= "LOGO_-{$time}.{$ext}";
+
+			$folder = "berkas/karya/logo";
+
+			if (!is_dir($folder)) {
+				mkdir($folder, 0775, true);
+			}
+
+			// UPLOAD FILE
+			$config['upload_path']          = $folder;
+			$config['allowed_types']        = 'JPEG|jpeg|JPG|jpg|PNG|png';
+			$config['max_size']             = 10048;
+			$config['file_name']						= $filename;
+
+			$this->load->library('upload', $config);
+
+			if (!$this->upload->do_upload('logo')){
+					$this->session->set_flashdata('error', 'Terjadi kesalahan saat meng-upload LOGO anda!!');
+					redirect($this->agent->referrer());
+					die();
+			}
+		}
+		if ($this->pengaturan_model->ubah_website($filename) == TRUE) {
 			$this->session->set_flashdata('success', 'Berhasil mengubah data website !!');
 			header('location:' . site_url('Pengaturan/Website'));
 		}else{

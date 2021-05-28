@@ -19,7 +19,7 @@
 						</div>
 
 						<div class="w-100 text-center text-md-left">
-							Copyrights &copy; 2021 All Rights Reserved by STIKI Technofest 2021 supported by Nestivent.org.<br>
+							Copyrights &copy; 2021 All Rights Reserved by STIKI 2021 supported by Nestivent.org.<br>
 						</div>
 
 					</div>

@@ -31,28 +31,23 @@
                       <i class="accordion-open icon-unlock"></i>
                     </div>
                     <div class="accordion-title">
-                      Masuk ke akun anda
+                      Masukkan email akun anda
                     </div>
                   </div>
                   <div class="accordion-content clearfix">
-                    <form id="login-form" name="login-form" class="row mb-0" action="<?php echo site_url('Masuk');?>" method="post">
+                    <form id="login-form" name="login-form" class="row mb-0" action="<?php echo site_url('Masuk/proses_lupa');?>" method="post">
                       <div class="col-12 form-group">
                         <label for="login-form-username">Email</label>
                         <input type="email" style="color: black; background-color: white;" id="login-form-username" name="email" placeholder="Masukkan email anda yang telah terdaftar" class="form-control" required/>
                       </div>
 
                       <div class="col-12 form-group">
-                        <label for="login-form-password">Password</label>
-                        <input type="password" style="color: black; background-color: white;" id="login-form-password" name="password" placeholder="" class="form-control" required/>
+                        <button class="button button-3d button-black button-gradient m-0" id="login-form-submit" name="login-form-submit" type="submit" value="login">Kirim link reset password</button>
                       </div>
-
-                      <div class="col-12 form-group">
-                        <button class="button button-3d button-black button-gradient m-0" id="login-form-submit" name="login-form-submit" type="submit" value="login">Masuk</button>
-                        <a href="<?php echo site_url('Lupa-pass');?>" class="float-right">Lupa password?</a>
-                      </div>
+                      <small>Cek folder spam anda, jika tidak ada email masuk pada kontak masuk email anda</small>
                     </form>
                   </div>
-                  Belum mempunyai akun?<a href="<?php echo site_url('Daftar');?>"> Daftar disini</a>
+                  Sudah mempunyai akun?<a href="<?php echo site_url('Masuk');?>"> Masuk disini</a>
 
                 </div>
 

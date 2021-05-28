@@ -22,9 +22,9 @@
                       <p class="mb-0"><b>Notifikasi !!</b><br> <?php echo $this->session->flashdata('success'); ?></p>
                     </div>
                   <?php } ?>
-                  <h3><center>Hubungi HUMAS kami di media instagram @stiki.technofest untuk mendaftarkan karya anda pada event kami.</center></h3>
+                  <!-- <h3><center>Hubungi HUMAS kami di media instagram @stiki.technofest untuk mendaftarkan karya anda pada event kami.</center></h3> -->
 
-                  <!-- <form id="register-form" name="register-form" class="row" action="" method="post">
+                  <form id="register-form" name="register-form" class="row" action="<?= site_url("Daftar") ?>" method="post">
 
                     <div class="col-md-6 col-sm-12 form-group">
                       <label for="register-form-name">Nama Lengkap</label>
@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="w-100"></div>
-                  </form> -->
+                  </form>
 
                 </div>
 

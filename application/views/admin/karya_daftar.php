@@ -25,13 +25,13 @@
                 <th><input type="checkbox" id="checkAll" name="checkAll"></th>
                 <th>KODE</th>
                 <th>Aksi</th>
+                <th>STATUS</th>
                 <th>JUDUL</th>
                 <th>PRODI</th>
                 <th>ANGGOTA</th>
                 <th>DOSPEM</th>
                 <th>LINK VIDEO</th>
                 <th>LINK DEMO</th>
-                <th>STATUS</th>
               </tr>
             </thead>
             <tbody>
@@ -46,20 +46,20 @@
                   <?php } else{?>
                     <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#verif<?= $key->ID_KARYA;?>"><i class="fa fa-check fa-sm"></i></button>
                   <?php }?>
-                  
+
                   <a href="<?php echo site_url('LihatKarya/'.$key->ID_KARYA);?>" class="btn btn-sm btn-light"><i class="fa fa-eye fa-sm"></i></a>
                   <?php if ($this->session->userdata('ROLE') != 1) { ?>
                     <a href="<?php echo site_url('EditKarya/'.$key->ID_KARYA);?>" class="btn btn-sm btn-info"><i class="fa fa-edit fa-sm"></i></a>
                     <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapus<?= $key->ID_KARYA;?>"><i class="fa fa-trash fa-sm"></i></button>
                   <?php }?>
                 </td>
+                <td><span class="badge <?php echo ($key->IS_VERIF == true? 'badge-success' : 'badge-warning')?>"><?php echo ($key->IS_VERIF == true? 'Terverifikasi' : 'Belum Terverif')?></span></td>
                 <td><?= $key->JUDUL;?></td>
                 <td><span class="badge <?php $a = rand(1, 4); if($a == 1){ echo 'badge-primary';}elseif($a == 2){echo 'badge-info'; }elseif($a == 3){echo 'badge-warning';}else{ echo 'badge-orange'; }?>"><?= $key->PRODI;?></span></td>
                 <td><button type="button" class="btn btn-sm btn-orange" data-toggle="modal" data-target="#anggota<?= $key->ID_KARYA;?>">Lihat anggota</button></td>
                 <td><?= $key->DOSPEM;?></td>
                 <td><a href="<?= $key->LINK_VIDEO;?>" class="btn btn-danger btn-sm" target="_blank"><?= $key->LINK_VIDEO;?></a></td>
                 <td><a href="<?= $key->LINK_DEMO;?>" class="btn btn-success btn-sm" target="_blank"><?= $key->LINK_DEMO;?></a></td>
-                <td><span class="badge <?php echo ($key->IS_VERIF == true? 'badge-success' : 'badge-warning')?>"><?php echo ($key->IS_VERIF == true? 'Terverifikasi' : 'Belum Terverif')?></span></td>
               </tr>
               <!-- MODAL hapus -->
               <div id="anggota<?= $key->ID_KARYA;?>" class="modal fade" role="dialog" tabindex="-1" >

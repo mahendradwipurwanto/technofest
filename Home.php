@@ -5,7 +5,7 @@ class Home extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		date_default_timezone_set("Asia/Jakarta");
-		$this->load->model(['home_model', 'pengaturan_model']);
+		$this->load->model(['home_model']);
 		if ($this->session->userdata('ROLE') == 2 || $this->session->userdata('logged_in') == FALSE){
 			if ($this->home_model->dev_status() == TRUE) {
 				redirect('coming-soon');
@@ -15,9 +15,6 @@ class Home extends CI_Controller {
 
 	public function index(){
 		$data['tentang']		= $this->home_model->tentang();
-		$data['judul']			= $this->home_model->judul();
-		$data['tanggal_mulai']	= $this->home_model->tanggal_mulai();
-		$data['tanggal_akhir']	= $this->home_model->tanggal_akhir();
 
 		$data['c_karya'] 		= $this->home_model->c_karya();
 		$data['c_agenda'] 	= $this->home_model->c_agenda();
@@ -41,11 +38,7 @@ class Home extends CI_Controller {
 	}
 
 	public function error404(){
-
-		$data['logo'] = $this->pengaturan_model->get_logo();
-		$data['judul'] = $this->pengaturan_model->get_judul();
-
-		$this->load->view('error404', $data);
+		$this->load->view('error404');
 	}
 
 }

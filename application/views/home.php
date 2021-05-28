@@ -9,11 +9,11 @@
 			<div class="container dark py-5 py-md-0">
 				<div class="row justify-content-between mt-5 col-mb-50">
 					<div class="col-lg-7 parallax" data-0="transform: translateY(0px); opacity: 1" data-300="transform: translateY(50px); opacity: 0">
-						<h2 class="font-weight-bold display-2 mb-0">STIKI TECHNOFEST 2021</h2>
+						<h2 class="font-weight-bold display-2 mb-0"><?php echo $judul; ?></h2>
 					</div>
 					<div class="col-lg-5 d-flex align-items-lg-end flex-column parallax text-left text-lg-right mb-5 mb-lg-0" data-0="transform: translateY(0px)" data-700="transform: translateY(-50px)">
 						<div class="mt-auto">
-							<h2 class="mb-2 gradient-text">20 - 22 Januari 2021</h2>
+							<h4 class="mb-2 gradient-text"><?php echo $tanggal_mulai." s/d ".$tanggal_akhir; ?></h4>
 							<h4 class="font-weight-normal">STIKI Malang</h4>
 							<a href="<?php echo site_url('Daftar');?>" class="button button-xxlarge button-white button-gradient m-0">DAFTAR SEKARANG</a>
 						</div>

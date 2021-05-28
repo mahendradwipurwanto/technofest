@@ -81,7 +81,7 @@
               <!-- Portfolio Single - Meta
               ============================================= -->
               <ul class="portfolio-meta bottommargin">
-                <li><span><i class="icon-line-heart" style="color: white;"></i><font color="white">Like:</span> <?= $like = $controller->karya_model->cek_like($karya->ID_KARYA);?></font></li>
+                <!-- <li><span><i class="icon-line-heart" style="color: white;"></i><font color="white">Like:</span> <?= $like = $controller->karya_model->cek_like($karya->ID_KARYA);?></font></li> -->
                 <li><span><i class="icon-user" style="color: white;"></i><font color="white">Dibuat oleh:</span>
                   <?php $anggota = $controller->karya_model->get_anggota($karya->ID_KARYA); foreach ($anggota as $key){ echo "<b class='text-italic'>".$key->NAMA."</b> (".$key->NRP.") - ";} ?>
                 </font></li>
