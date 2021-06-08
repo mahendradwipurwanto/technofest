@@ -1,5 +1,5 @@
 <div class="card mb-4">
-  <div class="card-header">Data Karya</div>
+  <div class="card-header">Data Pengguna</div>
   <div class="card-body">
     <div class="datatable">
       <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
