@@ -3,7 +3,9 @@
 <footer class="footer mt-auto footer-light">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-6 small">Copyright &#xA9; TechnoFest 2021 supported by Nestivent.org</div>
+      <!-- SUPPPORT THE DEVELOPER, PLEASE DO NOT REMOVE OR CHANGES THIS LINE -->
+      <div class="col-md-6 small">Copyright &#xA9; TechnoFest 2021 supported by <a href="www.nestivent.org" target="_blank"><i>Nestivent.org</i></a></div>
+      <!-- END SUPPORT LINE -->
     </div>
   </div>
 </footer>
@@ -33,7 +35,7 @@ $(document).ready(function() {
   $('#dev').change(function() {
       // this will contain a reference to the checkbox
           window.location.href = "<?= site_url('Pengaturan/dev_mode/'.(($dev_mode == 1) ? 0 : 1).'/'.$this->uri->uri_string());?>";
-      
+
   });
 </script>
 </body>

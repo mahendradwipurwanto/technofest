@@ -30,6 +30,7 @@ class Dashboard extends CI_Controller {
 			'semester'     => $this->dashboard_model->get_semester(),
 			'koordinator'     => $this->dashboard_model->get_koordinator(),
 			'totalKarya' 		=> $this->dashboard_model->get_karya(),
+			'karyaBelumVERIF' 		=> $this->dashboard_model->get_karyaBelumVERIF(),
 			'totalLike' 		=> $this->dashboard_model->getTotalData('TB_LIKE'),
 			'totalPengunjung' 	=> $this->dashboard_model->getTotalData('TB_VISITOR'),
 		);
@@ -59,6 +60,32 @@ class Dashboard extends CI_Controller {
 	public function dataPengguna(){
 		$data['listData'] = $this->dashboard_model->getListData();
 		$this->template_backend->view('admin/dataPengguna', $data);
+	}
+
+	function ubah_datapengguna(){
+
+		$KODE_USER 				= $this->input->post('KODE_USER');
+
+		if ($this->dashboard_model->ubah_datapengguna($KODE_USER) == TRUE){
+			$this->session->set_flashdata('success', 'Berhasil mengubah data Pengguna: '.$NAMA.' !!');
+			header('location:' . site_url('Pengguna'));
+		}else{
+			$this->session->set_flashdata('alert', 'Terjadi kesalahan saat mengubah data, coba lagi beberapa saat nanti !!');
+			header('location:' . site_url('Pengguna'));
+		}
+	}
+
+	function hapus_datapengguna(){
+
+		$KODE_USER 				= $this->input->post('KODE_USER');
+
+		if ($this->dashboard_model->hapus_datapengguna($KODE_USER) == TRUE){
+			$this->session->set_flashdata('success', 'Berhasil menghapus data Pengguna: '.$NAMA.' !!');
+			header('location:' . site_url('Pengguna'));
+		}else{
+			$this->session->set_flashdata('alert', 'Terjadi kesalahan saat menghapus data, coba lagi beberapa saat nanti !!');
+			header('location:' . site_url('Pengguna'));
+		}
 	}
 
 	public function Browser(){

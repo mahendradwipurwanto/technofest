@@ -127,12 +127,10 @@ class Karya extends CI_Controller {
 	}
 
 	public function detail($ID_KARYA){
-		if ($this->session->userdata('ROLE') == 2 || $this->session->userdata('logged_in') == FALSE){
-			if ($this->home_model->dev_status() == TRUE) {
-				redirect('coming-soon');
-			}
+		if ($this->home_model->dev_status() == TRUE){
+			redirect('coming-soon');
 		}else{
-			if ($this->karya_model->get_karya_single($ID_KARYA) == FALSE || $this->karya_model->get_karya_foto($ID_KARYA) == FALSE){
+			if ($this->karya_model->get_karya_single($ID_KARYA) == FALSE){
 				$this->session->set_flashdata('alert', 'Gagal menampilkan data karya tersebut!!');
 				redirect($this->agent->referrer());
 			}else{
@@ -151,7 +149,7 @@ class Karya extends CI_Controller {
 
 				$data['logo'] = $this->pengaturan_model->get_logo();
 				$data['judul'] = $this->pengaturan_model->get_judul();
-				
+
 				$this->load->view('frontend_karya', $data);
 				$this->load->view('karya_detail', $data);
 				$this->load->view('frontend_footer', $data);

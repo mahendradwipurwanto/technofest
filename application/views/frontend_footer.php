@@ -19,7 +19,9 @@
 						</div>
 
 						<div class="w-100 text-center text-md-left">
-							Copyrights &copy; 2021 All Rights Reserved by STIKI 2021 supported by Nestivent.org.<br>
+				      <!-- SUPPPORT THE DEVELOPER, PLEASE DO NOT REMOVE OR CHANGES THIS LINE -->
+							Copyrights &copy; 2021 All Rights Reserved by STIKI 2021 supported by <a href="www.nestivent.org" target="_blank"> <i>Nestivent.org</i></a>.<br>
+							<!-- END SUPPORT LINE -->
 						</div>
 
 					</div>

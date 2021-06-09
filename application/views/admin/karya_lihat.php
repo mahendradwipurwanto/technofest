@@ -95,35 +95,39 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <?php foreach ($foto as $key) { ?>
-            <div class="col-md-3">
-              <img src="<?php echo base_url();?>berkas/karya/<?= $karya->FOLDER;?>/foto/<?= $key->FOTO;?>" data-toggle="modal" data-target="#lihat<?= $key->ID_FOTO;?>" alt="" style="width:100%; height: auto; border:1px solid #ddd; border-radius:4px; cursor:pointer;">
-            </div>
+            <?php if ($foto == false): ?>
+              <h2 class="ml-4"><center>Tidak ada foto</center></h2>
+            <?php else: ?>
+              <?php foreach ($foto as $key): ?>
+                <div class="col-md-3">
+                  <img src="<?php echo base_url();?>berkas/karya/<?= $karya->FOLDER;?>/foto/<?= $key->FOTO;?>" data-toggle="modal" data-target="#lihat<?= $key->ID_FOTO;?>" alt="" style="width:100%; height: auto; border:1px solid #ddd; border-radius:4px; cursor:pointer;">
+                </div>
 
-            <!-- MODAL edit -->
-            <div id="lihat<?= $key->ID_FOTO;?>" class="modal fade" role="dialog" tabindex="-1" >
-              <div class="modal-dialog" role="document">
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header bg-info">
-                    <h5 class="modal-title text-white">Foto <b><?= $key->FOTO;?></b></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <!-- Modal body -->
-                  <div class="modal-body">
-                    <img src="<?php echo base_url();?>berkas/karya/<?= $karya->FOLDER;?>/foto/<?= $key->FOTO;?>" alt="" style="width:100%; height: auto; border:1px solid #ddd; border-radius:4px;">
-
-                      <!-- Modal footer -->
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-light btn-sm" data-dismiss="modal">Batal</button>
+                <!-- MODAL edit -->
+                <div id="lihat<?= $key->ID_FOTO;?>" class="modal fade" role="dialog" tabindex="-1" >
+                  <div class="modal-dialog" role="document">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header bg-info">
+                        <h5 class="modal-title text-white">Foto <b><?= $key->FOTO;?></b></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
                       </div>
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        <img src="<?php echo base_url();?>berkas/karya/<?= $karya->FOLDER;?>/foto/<?= $key->FOTO;?>" alt="" style="width:100%; height: auto; border:1px solid #ddd; border-radius:4px;">
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-light btn-sm" data-dismiss="modal">Batal</button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <?php }?>
+              <?php endforeach; ?>
+            <?php endif; ?>
           </div>
         </div>
       </div>

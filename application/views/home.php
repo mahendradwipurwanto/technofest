@@ -176,7 +176,11 @@
 								<div class="portfolio-image">
 									<a href="<?php echo site_url('DetailKarya/'.$value->ID_KARYA);?>">
 										<?php $foto = $controller->home_model->get_foto($value->ID_KARYA);?>
-										<img src="<?php echo base_url();?>berkas/karya/<?= $value->FOLDER;?>/foto/<?= $foto;?>" alt="<?= $value->JUDUL;?>">
+			              <?php if ($foto == false): ?>
+			                <img src="<?php echo base_url();?>berkas/karya/logo/<?= $logo ?>" alt="">
+			              <?php else: ?>
+			                <img src="<?php echo base_url();?>berkas/karya/<?= $value->FOLDER;?>/foto/<?= $foto;?>" alt="<?= $value->JUDUL;?>">
+			              <?php endif; ?>
 									</a>
 									<div class="bg-overlay">
 										<div class="bg-overlay-content dark" data-hover-animate="fadeIn">

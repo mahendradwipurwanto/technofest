@@ -3,7 +3,7 @@
 class Dashboard_model extends CI_Model {
 
 	public function get_semester(){
-		$query = $this->db->query("SELECT * FROM TB_SEMESTER");
+		$query = $this->db->query("SELECT * FROM TB_SEMESTER LIMIT 5");
 		if ($query->num_rows() > 0) {
 			return $query->result();
 		}else {
@@ -45,6 +45,11 @@ class Dashboard_model extends CI_Model {
 		return $query->num_rows();
 	}
 
+	public function get_karyaBelumVERIF(){
+		$query = $this->db->query("SELECT * FROM TB_KARYA WHERE IS_VERIF = 0 AND ID_SEMESTER IN (SELECT ID_SEMESTER FROM TB_SEMESTER WHERE STATUS = 1)");
+		return $query->num_rows();
+	}
+
 	public function getTotalData($table){
 		$res['data'] = $this->db->count_all($table);
 		if($res['data'] != null){
@@ -72,8 +77,35 @@ class Dashboard_model extends CI_Model {
 		return $res;
 	}
 
+	public function ubah_datapengguna($KODE_USER){
+		$KODE_USER	= $this->input->post('KODE_USER');
+		$NAMA 		= $this->input->post('NAMA');
+		$EMAIL 		= $this->input->post('EMAIL');
+		$ASAL_KAMPUS= $this->input->post('ASAL_KAMPUS');
+		$ROLE 		= $this->input->post('ROLE');
+		$password 	= $this->input->post('PASSWORD');
+
+		if(empty($password)){
+		$data = array('NAMA' => $NAMA, 'EMAIL' => $EMAIL, 'ASAL_KAMPUS' => $ASAL_KAMPUS, 'ROLE' => $ROLE);
+		}else{
+		$data = array('NAMA' => $NAMA, 'EMAIL' => $EMAIL, 'ASAL_KAMPUS' => $ASAL_KAMPUS, 'ROLE' => $ROLE, 'PASSWORD' => password_hash($password, PASSWORD_DEFAULT));
+		}
+		$this->db->where('KODE_USER', $KODE_USER);
+		$this->db->update('TB_AUTH', $data);
+		return ($this->db->affected_rows() != 1) ? false : true;
+
+	}
+
+	public function hapus_datapengguna($KODE_USER){
+
+		$this->db->where('KODE_USER', $KODE_USER);
+		$this->db->delete('TB_AUTH');
+		return ($this->db->affected_rows() != 1) ? false : true;
+
+	}
+
 	public function get_koordinator(){
-		$query = $this->db->query("SELECT * FROM TB_AUTH WHERE ROLE = 2");
+		$query = $this->db->query("SELECT * FROM TB_AUTH WHERE ROLE = 2 LIMIT 5");
 		if ($query->num_rows() > 0) {
 			return $query->result();
 		}else {

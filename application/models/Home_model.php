@@ -28,7 +28,7 @@ class Home_model extends CI_Model {
 	}
 
 	public function c_karya(){
-		$query = $this->db->query("SELECT * FROM TB_KARYA WHERE ID_SEMESTER IN (SELECT ID_SEMESTER FROM TB_SEMESTER WHERE STATUS =1)");
+		$query = $this->db->query("SELECT * FROM TB_KARYA WHERE IS_VERIF = true AND ID_SEMESTER IN (SELECT ID_SEMESTER FROM TB_SEMESTER WHERE STATUS =1)");
 		return $query->num_rows();
 	}
 
@@ -71,7 +71,11 @@ class Home_model extends CI_Model {
 
 	public function get_foto($ID_KARYA){
 		$query = $this->db->query("SELECT FOTO FROM TB_FOTO WHERE ID_KARYA = '$ID_KARYA' LIMIT 1");
-		return $query->row()->FOTO;
+		if ($query->num_rows() > 0) {
+			return $query->row()->FOTO;
+		}else {
+			return false;
+		}
 	}
 
 	public function kunjungi($KODE_USER, $PAGE){

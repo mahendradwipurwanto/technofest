@@ -60,9 +60,13 @@
               <div class="fslider" data-arrows="false" data-thumbs="true" data-animation="fade">
                 <div class="flexslider">
                   <div class="slider-wrap">
+                    <?php if ($foto == false): ?>
+                      <div class="slide" data-thumb="<?php echo base_url();?>berkas/karya/logo/<?= $logo ?>"><a href="#"><img src="<?php echo base_url();?>berkas/karya/logo/<?= $logo ?>" alt="Image"></a></div>
+                    <?php else: ?>
                     <?php foreach ($foto as $key) { ?>
                       <div class="slide" data-thumb="<?php echo base_url();?>berkas/karya/<?= $karya->FOLDER;?>/foto/<?= $key->FOTO;?>"><a href="#"><img src="<?php echo base_url();?>berkas/karya/<?= $karya->FOLDER;?>/foto/<?= $key->FOTO;?>" alt="Image"></a></div>
                     <?php }?>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>
