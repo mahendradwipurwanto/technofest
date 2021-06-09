@@ -81,8 +81,27 @@ class Masuk extends CI_Controller {
 		$this->db->where("EMAIL", htmlspecialchars($this->input->post("email"), TRUE));
 		$this->db->update('TB_AUTH', $data);
 
+		$this->send_mail(htmlspecialchars($this->input->post("email"), TRUE));
 		$this->session->set_flashdata('success', 'Berhasil mereset password anda, harap masuk menggunakan hak akses baru anda');
 		redirect(site_url('Masuk'));
+	}
+
+
+	function send_mail($email){
+
+		$message = "Hai, password kamu atas akun dengan email: <b>{$email}</b> telah diubah diwebsite kami pada ".date("d-m-Y H:i:s").".<br> Harap hubungi admin kami jika kamu tidak merasa melakukan hal ini terima kasih";
+
+		$mail = array(
+			'to' 				=> $email,
+			'subject'		=> "PERUBAHAN PASSWORD AKUN TECHNOFEST",
+			'message'		=> $message
+		);
+
+		if ($this->mailer->send($mail) == TRUE) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 
