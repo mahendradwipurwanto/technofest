@@ -19,7 +19,7 @@ class Mailer{
     $mail = new PHPMailer(true);
 
     // SMTP configuration
-    // $mail->isSMTP();
+    $mail->isSMTP();
     $mail->SMTPDebug  = 1;
     $mail->SMTPAuth   = TRUE;
     $mail->SMTPKeepAlive = TRUE;
@@ -27,7 +27,7 @@ class Mailer{
     $mail->Port       = 465;
     $mail->Host       = "mail.nestivent.org";
     $mail->Username   = "support@nestivent.org";
-    $mail->Password   = "]7F5^z6B(qRn";
+    $mail->Password   = "?v8lRT,nfDiM";
 
     $mail->setFrom("support@nestivent.org", "Technofest");
     $mail->addReplyTo("support@nestivent.org", "Technofest");
