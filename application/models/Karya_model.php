@@ -94,7 +94,11 @@ class Karya_model extends CI_Model {
 	}
 
 	public function get_karya($ID_KATEGORI){
+<<<<<<< HEAD
 		$query = $this->db->query("SELECT * FROM TB_KARYA a INNER JOIN TB_PRODI b ON a.PRODI = b.ID_PRODI WHERE a.ID_KATEGORI = '$ID_KATEGORI' AND a.ID_SEMESTER IN (SELECT ID_SEMESTER FROM TB_SEMESTER WHERE STATUS =1)");
+=======
+		$query = $this->db->query("SELECT * FROM TB_KARYA WHERE ID_KATEGORI = '".$ID_KATEGORI."'");
+>>>>>>> 095c4d2b39d2fefca58837d5d3f87357d6222258
 		if ($query->num_rows() > 0) {
 			return $query->result();
 		}else {
