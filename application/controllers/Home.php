@@ -6,7 +6,7 @@ class Home extends CI_Controller {
 		parent::__construct();
 		date_default_timezone_set("Asia/Jakarta");
 		$this->load->model(['home_model', 'pengaturan_model']);
-		if ($this->session->userdata('ROLE') == 2 || $this->session->userdata('logged_in') == FALSE){
+		if ($this->session->userdata('ROLE') == 1 || $this->session->userdata('logged_in') == FALSE){
 			if ($this->home_model->dev_status() == TRUE) {
 				redirect('coming-soon');
 			}

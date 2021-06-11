@@ -162,7 +162,7 @@
 
             <?php if ($ID_SEM != null) { ?>
               <div class="sidenav-menu-heading">Karya</div>
-              <?php if ($this->session->userdata('ROLE') == 0) { ?>
+              <?php if ($this->session->userdata('ROLE') == 0 || $this->session->userdata('ROLE') == 2) { ?>
               <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                 <div class="nav-link-icon"><i data-feather="grid"></i></div>
                 Data Karya

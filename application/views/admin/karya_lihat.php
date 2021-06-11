@@ -59,6 +59,14 @@
           </div>
           <div class="row mb-2">
             <div class="col-3">
+              <label class="title font-weight-bold">LINK GITHUB</label>
+            </div>
+            <div class="col-9">
+              <a href="<?= $karya->LINK_GITHUB;?>" target="_blank" class="btn btn-danger btn-sm"><?= $karya->LINK_GITHUB;?></a>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-3">
               <label class="title font-weight-bold">LINK VIDEO</label>
             </div>
             <div class="col-9">

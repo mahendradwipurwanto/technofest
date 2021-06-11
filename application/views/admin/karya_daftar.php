@@ -30,6 +30,7 @@
                 <th>PRODI</th>
                 <th>ANGGOTA</th>
                 <th>DOSPEM</th>
+                <th>LINK GITHUB</th>
                 <th>LINK VIDEO</th>
                 <th>LINK DEMO</th>
               </tr>
@@ -58,6 +59,7 @@
                 <td><span class="badge <?php $a = rand(1, 4); if($a == 1){ echo 'badge-primary';}elseif($a == 2){echo 'badge-info'; }elseif($a == 3){echo 'badge-warning';}else{ echo 'badge-orange'; }?>"><?= $key->PRODI;?></span></td>
                 <td><button type="button" class="btn btn-sm btn-orange" data-toggle="modal" data-target="#anggota<?= $key->ID_KARYA;?>">Lihat anggota</button></td>
                 <td><?= $key->DOSPEM;?></td>
+                <td><a href="<?= $key->LINK_GITHUB;?>" class="btn btn-warning btn-sm" target="_blank"><?= $key->LINK_GITHUB;?></a></td>
                 <td><a href="<?= $key->LINK_VIDEO;?>" class="btn btn-danger btn-sm" target="_blank"><?= $key->LINK_VIDEO;?></a></td>
                 <td><a href="<?= $key->LINK_DEMO;?>" class="btn btn-success btn-sm" target="_blank"><?= $key->LINK_DEMO;?></a></td>
               </tr>

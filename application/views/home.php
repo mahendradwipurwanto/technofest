@@ -139,9 +139,9 @@
 						<a href="#" class="team">
 							<div class="team-image">
 								<?php if ($key->FOTO == null) { ?>
-									<img src="<?php echo base_url();?>berkas/file/pembicara/1.jpg" alt="<?= $key->NAMA;?>">
+									<img src="<?php echo base_url();?>berkas/file/pembicara/blank.jpg" alt="<?= $key->NAMA;?>">
 								<?php }else { ?>
-									<img src="<?php echo base_url();?>berkas/file/pembicara/<?= $key->FOTO;?>" alt="<?= $key->NAMA;?>">
+									<img src="<?php echo base_url();?>berkas/karya/01pembicara/<?= $key->FOTO;?>" alt="<?= $key->NAMA;?>">
 								<?php }?>
 							</div>
 							<div class="team-desc">

@@ -66,13 +66,18 @@
                 <small class="text-muted">Max size 2mb, max file 5 file</small>
               </div>
               <div class="form-group">
+                <label class="title">Link GITHUB/SOURCE CODE</label>
+                <input type="text" class="form-control" name="LINK_GITHUB" value="<?= $karya->LINK_GITHUB;?>" >
+                <small class="text-muted">Tambahkan jika ada. (Link github / google drive)</small>
+              </div>
+              <div class="form-group">
                 <label class="title">Link Video</label>
-                <input type="text" class="form-control" name="LINK_VIDEO" maxlength="100" value="<?= $karya->LINK_VIDEO;?>" >
+                <input type="text" class="form-control" name="LINK_VIDEO" value="<?= $karya->LINK_VIDEO;?>" >
                 <small class="text-muted">Tambahkan jika ada, diharuskan memakai embed link google drive / youtube.</small>
               </div>
               <div class="form-group">
                 <label class="title">Link Demo</label>
-                <input type="text" class="form-control" name="LINK_DEMO" maxlength="100" value="<?= $karya->LINK_DEMO;?>" >
+                <input type="text" class="form-control" name="LINK_DEMO" value="<?= $karya->LINK_DEMO;?>" >
                 <small class="text-muted">Tambahkan jika ada.</small>
               </div>
             </div>

@@ -75,12 +75,8 @@
               <tr>
                 <td><?= $no;?></td>
                 <td>
-                  <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#edit<?= $key->ID_PRODI;?>"><i class="fa fa-edit fa-sm"></i></button>
-                  <?php if($controller->pengaturan_model->pro_count($key->ID_PRODI) > 0){ ?>
-                    <button type="button" class="btn btn-sm btn-light" data-toggle="modal" data-target="#error"><i class="fa fa-trash fa-sm"></i></button>
-                  <?php }else{?>
-                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapus<?= $key->ID_PRODI;?>"><i class="fa fa-trash fa-sm"></i></button>
-                  <?php }?>
+                  <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#edit<?= $key->ID_PEMBICARA;?>"><i class="fa fa-edit fa-sm"></i></button>
+                  <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapus<?= $key->ID_PEMBICARA;?>"><i class="fa fa-trash fa-sm"></i></button>
                 </td>
                 <td><?= $key->NAMA;?></td>
                 <td> <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#foto<?= $key->ID_PEMBICARA;?>">foto pembicara</button> </td>
@@ -89,7 +85,7 @@
               </tr>
 
               <!-- MODAL edit -->
-              <div id="edit<?= $key->ID_PRODI;?>" class="modal fade" role="dialog" tabindex="-1" >
+              <div id="edit<?= $key->ID_PEMBICARA;?>" class="modal fade" role="dialog" tabindex="-1" >
                 <div class="modal-dialog" role="document">
                   <!-- Modal content-->
                   <div class="modal-content">
@@ -101,7 +97,7 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
-                      <form class="form-horizontal" action="<?php echo site_url('Pembicara/ubah');?>" method="post" enctype="multipart/form-data">
+                      <form class="form-horizontal" action="<?php echo site_url('Pembicara/edit');?>" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="ID_PEMBICARA" value="<?= $key->ID_PEMBICARA;?>">
 
                         <div class="form-group">
@@ -139,7 +135,7 @@
               </div>
 
               <!-- MODAL hapus -->
-              <div id="hapus<?= $key->ID_PRODI;?>" class="modal fade" role="dialog" tabindex="-1" >
+              <div id="hapus<?= $key->ID_PEMBICARA;?>" class="modal fade" role="dialog" tabindex="-1" >
                 <div class="modal-dialog" role="document">
                   <!-- Modal content-->
                   <div class="modal-content">
@@ -163,6 +159,31 @@
                           <button type="submit" class="btn btn-danger btn-sm">Hapus data</button>
                         </div>
                       </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- MODAL hapus -->
+              <div id="foto<?= $key->ID_PEMBICARA;?>" class="modal fade" role="dialog" tabindex="-1" >
+                <div class="modal-dialog" role="document">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                      <h5 class="modal-title text-white">Hapus data Pembicara <b><?= $key->NAMA;?></b></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+                        <img src="<?= base_url() ?>berkas/karya/01pembicara/<?= $key->FOTO ?>" alt="" style="width: 100%; height: auto">
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-light btn-sm" data-dismiss="modal">Tutup</button>
+                        </div>
                     </div>
                   </div>
                 </div>

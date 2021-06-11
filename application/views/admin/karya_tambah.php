@@ -60,14 +60,19 @@
                 <small class="text-muted">Tambahkan poster jika ada. Max size 2mb, max file 5 file</small>
               </div>
               <div class="form-group">
+                <label class="title">Link GITHUB/SOURCE CODE</label>
+                <input type="text" class="form-control" name="LINK_GITHUB" placeholder="Link Demo Karya" >
+                <small class="text-muted">Tambahkan jika ada. (Link github / google drive)</small>
+              </div>
+              <div class="form-group">
                 <label class="title">Link Video</label>
-                <input type="text" class="form-control" name="LINK_VIDEO" maxlength="100" placeholder="Link Video Trailer Karya" >
+                <input type="text" class="form-control" name="LINK_VIDEO" placeholder="Link Video Trailer Karya" >
                 <small class="text-muted">Tambahkan jika ada, diharuskan memakai embed link youtube.</small>
                 <small class="text-danger">Pastikan, terdapat kode video diakhir link. Ex: https://youtu.be/<b>db1VfDpipu8</b></small>
               </div>
               <div class="form-group">
                 <label class="title">Link Demo</label>
-                <input type="text" class="form-control" name="LINK_DEMO" maxlength="100" placeholder="Link Demo Karya" >
+                <input type="text" class="form-control" name="LINK_DEMO" placeholder="Link Demo Karya" >
                 <small class="text-muted">Tambahkan jika ada.</small>
               </div>
             </div>

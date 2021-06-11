@@ -11,7 +11,7 @@ class Karya extends CI_Controller {
 	}
 
 	public function index(){
-		if ($this->session->userdata('ROLE') == 2 || $this->session->userdata('logged_in') == FALSE){
+		if ($this->session->userdata('ROLE') == 1 || $this->session->userdata('logged_in') == FALSE){
 			if ($this->home_model->dev_status() == TRUE) {
 				redirect('coming-soon');
 			}
