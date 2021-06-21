@@ -22,15 +22,15 @@ Server Requirements
 
 PHP version 7.2 or newer is recommended.
 
-It should work on 7.2 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
+It should work on Codeigniter 3.x as well, but we strongly advise you NOT to run
+such old versions of Codeigniter, because of potential security and performance
 issues, as well as missing features.
 
 ************
 Further Development
 ************
 
-This project is the last and final development. All further development DID NOT CONTAINT new features but ONLY to fix bug and improve system!
+This project is the last and final development. All further development DO NOT CONTAIN new features but ONLY to fix bug and improve system!
 
 New features will all deploy on NESTIVENT.ORG
 
@@ -45,4 +45,4 @@ agreement <https://github.com/mahendradwipurwanto/technofest/blob/master/license
 Acknowledgement
 ***************
 
-The Development team would like to thank NESTIVENT.ORG and STIKI Malang for its big contribution, include Mahendra Dwi Purwanto and Ilham Sagita from STUDENT of STIKI Malang.
+The Development team would like to thank NESTIVENT.ORG and STIKI Malang for its big contribution.
