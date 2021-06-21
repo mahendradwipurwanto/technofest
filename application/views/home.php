@@ -100,7 +100,7 @@
 									<?php }else{ foreach ($agenda as $value) { ?>
 										<dt class="col-sm-4"><div class="schedule-cs font-primary"><?= date("d F Y", strtotime($value->TANGGAL));?></div></dt>
 										<dd class="col-sm-8">
-											<div class="schedule-desc"><?= $value->JUDUL;?></div>
+											<div class="schedule-desc"> <a href="<?= site_url('data-agenda/'.$value->ID_AGENDA) ?>"> <?= $value->JUDUL;?></a></div>
 										</dd>
 									<?php }}?>
 								</dl>

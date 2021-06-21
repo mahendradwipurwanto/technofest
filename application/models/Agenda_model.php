@@ -38,6 +38,7 @@ class Agenda_model extends CI_Model {
     $BERBAYAR       = $this->input->post('BERBAYAR');
     $FEE            = $this->input->post('FEE');
     $MEDIA          = $this->input->post('MEDIA');
+    $LINK_DAFTAR    = $this->input->post('LINK_DAFTAR');
     $KETERANGAN     = $this->input->post('KETERANGAN');
 
     $WAKTU = "{$WAKTU_MULAI} - {$WAKTU_SELESAI}";
@@ -57,6 +58,7 @@ class Agenda_model extends CI_Model {
         'BERBAYAR'    => is_null($BERBAYAR)?0:1,
         'FEE'         => is_null($BERBAYAR)?null:$FEE,
         'MEDIA'       => is_null($SEMINAR)?null:$MEDIA,
+        'LINK_DAFTAR' => is_null($REGISTER)?null:$LINK_DAFTAR,
         'KETERANGAN'  => $KETERANGAN
       );
 
@@ -74,6 +76,7 @@ class Agenda_model extends CI_Model {
         'BERBAYAR'    => is_null($BERBAYAR)?0:1,
         'FEE'         => is_null($BERBAYAR)?null:$FEE,
         'MEDIA'       => is_null($SEMINAR)?null:$MEDIA,
+        'LINK_DAFTAR' => is_null($REGISTER)?null:$LINK_DAFTAR,
         'KETERANGAN'  => $KETERANGAN
       );
     }
@@ -94,6 +97,7 @@ class Agenda_model extends CI_Model {
     $BERBAYAR       = $this->input->post('BERBAYAR');
     $FEE            = $this->input->post('FEE');
     $MEDIA          = $this->input->post('MEDIA');
+    $LINK_DAFTAR    = $this->input->post('LINK_DAFTAR');
     $KETERANGAN     = $this->input->post('KETERANGAN');
 
     $WAKTU = "{$WAKTU_MULAI} - {$WAKTU_SELESAI}";
@@ -113,6 +117,7 @@ class Agenda_model extends CI_Model {
         'BERBAYAR'    => is_null($BERBAYAR)?0:1,
         'FEE'         => is_null($BERBAYAR)?null:$FEE,
         'MEDIA'       => is_null($SEMINAR)?null:$MEDIA,
+        'LINK_DAFTAR' => is_null($REGISTER)?null:$LINK_DAFTAR,
         'KETERANGAN'  => $KETERANGAN
       );
 

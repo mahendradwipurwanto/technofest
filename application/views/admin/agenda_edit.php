@@ -178,6 +178,12 @@ tinymce.init({
               <small class="text-muted">Isikan alamat atau media tempat penyelenggaraan seminar.</small>
             </div>
 
+            <div class="form-group hide" id="link_daftar">
+              <label class="title">Link pendaftaran</label>
+              <textarea type="text" name="LINK_DAFTAR" class="form-control" maxlength="250" placeholder="Link pendaftaran google form/zoom"></textarea>
+              <small class="text-muted">Isikan link pendaftaran google form/zoom.</small>
+            </div>
+
             <div class="form-group">
               <label class="title">Keterangan</label>
               <textarea type="text" name="KETERANGAN" class="form-control" id="richTextArea"><?= $agenda->KETERANGAN;?></textarea>
@@ -216,9 +222,11 @@ tinymce.init({
       $("#register").change(function() {
         if(this.checked) {
           $("#bayar").removeClass('hide');
+          $("#link_daftar").removeClass('hide');
           $("#daftar_ket").removeClass('hide');
         }else{
           $("#bayar").addClass('hide');
+          $("#link_daftar").addClass('hide');
           $("#daftar_ket").addClass('hide');
         }
       });

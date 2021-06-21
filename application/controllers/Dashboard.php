@@ -22,7 +22,7 @@ class Dashboard extends CI_Controller {
 			redirect('Masuk');
 		}
 
-		$this->load->model(['dashboard_model']);
+		$this->load->model(['dashboard_model', 'home_model']);
 	}
 
 	public function index(){
@@ -31,6 +31,7 @@ class Dashboard extends CI_Controller {
 			'koordinator'     => $this->dashboard_model->get_koordinator(),
 			'totalKarya' 		=> $this->dashboard_model->get_karya(),
 			'karyaBelumVERIF' 		=> $this->dashboard_model->get_karyaBelumVERIF(),
+			'c_agenda' 		=> $this->home_model->c_agenda(),
 			'totalLike' 		=> $this->dashboard_model->getTotalData('TB_LIKE'),
 			'totalPengunjung' 	=> $this->dashboard_model->getTotalData('TB_VISITOR'),
 		);

@@ -6,7 +6,7 @@
 <hr>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-9">
     <div class="card shadow-sm">
       <div class="card-header">Daftar Agenda
         <a href="<?php echo site_url('Agenda/Tambah');?>" class="btn btn-sm btn-primary float-right"> <i class="fa fa-plus fa-xs mr-2"></i> Tambah Agenda</a>
@@ -29,7 +29,7 @@
               <tr>
                 <td><?= $key->ID_AGENDA;?></td>
                 <td>
-                  <a href="<?php echo site_url('Agenda/'.$key->ID_AGENDA);?>" class="btn btn-sm btn-orange"><i class="fa fa-eye fa-sm"></i></a>
+                  <a href="<?php echo site_url('data-agenda/'.$key->ID_AGENDA);?>" class="btn btn-sm btn-orange" target="_blank"><i class="fa fa-eye fa-sm"></i></a>
                   <a href="<?php echo site_url('Agenda/Edit/'.$key->ID_AGENDA);?>" class="btn btn-sm btn-info"><i class="fa fa-edit fa-sm"></i></a>
                   <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#hapus<?= $key->ID_AGENDA;?>"><i class="fa fa-trash fa-sm"></i></button>
                 </td>
@@ -82,6 +82,11 @@
             </tbody>
           </table>
         </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="alert alert-primary">
+        <p>Sementara pendaftaran hanya berupa link dari google form atau zoom register.</p>
       </div>
     </div>
   </div>

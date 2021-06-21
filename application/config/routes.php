@@ -67,6 +67,8 @@ $route['Koordinator']            = 'Dashboard/Koordinator';
 $route['Lihat/(:any)']           = 'Karya/detail/$1';
 $route['vote/(:any)']            = 'Karya/vote/$1';
 
+$route['data-agenda/(:any)']     = 'Agenda_user/detail/$1';
+
 $route['Pengguna']               = 'Dashboard/dataPengguna';
 
 $route['Daftar']                 = 'Masuk/Daftar';

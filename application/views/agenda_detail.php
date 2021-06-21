@@ -60,9 +60,11 @@
               <div class="fslider" data-arrows="false" data-thumbs="true" data-animation="fade">
                 <div class="flexslider">
                   <div class="slider-wrap">
-                    <?php foreach ($foto as $key) { ?>
-                      <div class="slide" data-thumb="<?php echo base_url();?>berkas/agenda/<?= $agenda->FOLDER;?>/foto/<?= $key->FOTO;?>"><a href="#"><img src="<?php echo base_url();?>berkas/agenda/<?= $agenda->FOLDER;?>/foto/<?= $key->FOTO;?>" alt="Image"></a></div>
-                    <?php }?>
+                    <?php if ($agenda->POSTER == NULL): ?>
+                      <div class="slide" data-thumb="<?php echo base_url();?>berkas/karya/logo/<?= $logo ?>"><a href="#"><img src="<?php echo base_url();?>berkas/karya/logo/<?= $logo ?>" alt="Image"></a></div>
+                    <?php else: ?>
+                      <div class="slide" data-thumb="<?php echo base_url();?>berkas/agenda/<?= $agenda->ID_AGENDA;?>/poster/<?= $agenda->POSTER;?>"><a href="#"><img src="<?php echo base_url();?>berkas/agenda/<?= $agenda->ID_AGENDA;?>/poster/<?= $agenda->POSTER;?>" alt="Image"></a></div>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>
@@ -74,52 +76,26 @@
               <!-- Portfolio Single - Description
               ============================================= -->
               <div class="fancy-title title-bottom-border">
-                <h2 style="color: white;">Info Karya:</h2>
+                <h2 style="color: white;">Info Agenda:</h2>
               </div>
-              <p style="color: white;"><?= $agenda->DESKRIPSI;?>.</p>
+              <p style="color: white;"><?= $agenda->KETERANGAN;?>.</p>
 
               <!-- Portfolio Single - Meta
               ============================================= -->
               <ul class="portfolio-meta bottommargin">
-                <li><span><i class="icon-line-heart" style="color: white;"></i><font color="white">Divote:</span> <?= $like = $controller->agenda_model->cek_like($agenda->ID_KARYA);?></font></li>
-                <li><span><i class="icon-user" style="color: white;"></i><font color="white">Dibuat oleh:</span>
-                  <?php $anggota = $controller->agenda_model->get_anggota($agenda->ID_KARYA); foreach ($anggota as $key){ echo "<b>".$key->NAMA."</b> (".$key->NRP."), ";} ?>
+                <li><span><i class="icon-home" style="color: white;"></i><font color="white">Kegiatan</span>: <?= ($agenda->SEMINAR == 1 ? 'SEMINAR' : '');?></font></li>
+                <li><span><i class="icon-dashboard" style="color: white;"></i><font color="white">Via</span>: <?= $agenda->MEDIA ;?></font></li>
+                <li><span><i class="icon-calendar3" style="color: white;"></i><font color="white">Tanggal</span>: <?= date("d F Y", strtotime($agenda->TANGGAL));?></span>
                 </font></li>
-                <li><span><i class="icon-calendar3" style="color: white;"></i><font color="white">Kategori:</span> <?= $agenda->KATEGORI;?></font></li>
+                <li><span><i class="icon-clock" style="color: white;"></i><font color="white">Waktu</span>: <?= $agenda->WAKTU;?> WIB</font></li>
+                <?php if ($agenda->BERBAYAR == 1): ?>
+                  <li><span><i class="icon-money" style="color: white;"></i><font color="white">FEE</span>: Rp.<?= ($agenda->BERBAYAR == 1 ? $agenda->FEE : 'GRATIS');?></font></li>
+                <?php endif; ?>
+                <?php if ($agenda->REGISTER == 1): ?>
+                  <li><span><i class="icon-link" style="color: white;"></i><font color="white">Link daftar</span>: <a href="<?= $agenda->LINK_DAFTAR ?>" target="_blank"> <?= ($agenda->REGISTER == 1 ? $agenda->LINK_DAFTAR : '');?></a></font></li>`
+                <?php endif; ?>
               </ul>
               <!-- Portfolio Single - Meta End -->
-
-              <div class="feature-box fbox-border fbox-light fbox-effect">
-                <?php if ($this->session->userdata('logged_in') == TRUE) {
-                  if ($controller->agenda_model->cek_vote($agenda->ID_KARYA, $this->session->userdata('KODE_USER')) == TRUE ) {
-                    ?>
-                    <div class="fbox-icon">
-                      <a href="<?php echo site_url('vote/'.$agenda->ID_KARYA);?>"><i class="icon-line-heart" style="color: red"></i></a>
-                    </div>
-                    <div class="fbox-content">
-                      <h3 style="color: white">Like</h3>
-                      <p>Klik tombol disamping kiri untuk like agenda ini.</p>
-                    </div>
-                  <?php }else{?>
-                    <div class="fbox-icon">
-                      <i class="icon-like" style="color: red"></i>
-                    </div>
-                    <div class="fbox-content">
-                      <h3 style="color: white">Like</h3>
-                      <p>Anda telah me-like agenda ini.</p>
-                    </div>
-                  <?php }}else{?>
-                    <div class="fbox-icon">
-                      <a href="<?php echo site_url('vote/'.$agenda->ID_KARYA);?>"><i class="icon-line-heart" style="color: red"></i></a>
-                    </div>
-                    <div class="fbox-content">
-                      <h3 style="color: white">Like</h3>
-                      <p>Klik tombol disamping kiri untuk like agenda ini.</p>
-                    </div>
-                  <?php }?>
-                </div>
-                <!-- Portfolio Single - Share End -->
-              </div><!-- .portfolio-single-content end -->
             </div>
 
           </div>

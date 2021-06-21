@@ -51,7 +51,7 @@ tinymce.init({
             <input type="text" class="form-control" value="<?= $semester_aktif;?>" required readonly>
             <small class="text-muted">Ubah semester aktif di pengaturan.</small>
           </div>
-          
+
           <div class="form-group">
             <label class="title">Nama Agenda <small class="text-danger">*</small> </label>
             <input type="text" name="JUDUL" maxlength="50" class="form-control" placeholder="Nama Agenda" required>
@@ -175,6 +175,12 @@ tinymce.init({
             <small class="text-muted">Isikan alamat atau media tempat penyelenggaraan seminar.</small>
           </div>
 
+          <div class="form-group hide" id="link_daftar">
+            <label class="title">Link pendaftaran</label>
+            <textarea type="text" name="LINK_DAFTAR" class="form-control" maxlength="250" placeholder="Link pendaftaran google form/zoom"></textarea>
+            <small class="text-muted">Isikan link pendaftaran google form/zoom.</small>
+          </div>
+
           <div class="form-group">
             <label class="title">Keterangan</label>
             <textarea type="text" name="KETERANGAN" class="form-control" id="richTextArea" placeholder="Isikan keterangan kategori"></textarea>
@@ -213,9 +219,11 @@ tinymce.init({
     $("#register").change(function() {
       if(this.checked) {
         $("#bayar").removeClass('hide');
+        $("#link_daftar").removeClass('hide');
         $("#daftar_ket").removeClass('hide');
       }else{
         $("#bayar").addClass('hide');
+        $("#link_daftar").addClass('hide');
         $("#daftar_ket").addClass('hide');
       }
     });
