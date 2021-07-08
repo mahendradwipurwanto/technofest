@@ -1,4 +1,0 @@
-<Files "CC-720088888803.txt">  
-  Order Allow,Deny
-  Deny from all
-</Files>
