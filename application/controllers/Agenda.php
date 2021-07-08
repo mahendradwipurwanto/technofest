@@ -61,13 +61,13 @@ class Agenda extends CI_Controller {
     $scrap  = str_replace($vocal, "", $JUDUL);
     $begin  = substr($scrap, 0, 3);
 
-    $chars 	= "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    $uniqid 	= "";
+    $chars  = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $uniqid   = "";
 
     do {
       for ($i = 0; $i < 5; $i++) {
         $uniqid      .= $chars[mt_rand(0, strlen($chars)-1)];
-        $ID_AGENDA 	= strtoupper($begin.'_'.$uniqid);
+        $ID_AGENDA  = strtoupper($begin.'_'.$uniqid);
       }
 
     } while ($this->agenda_model->agenda_id($ID_AGENDA) > 0);
@@ -79,31 +79,37 @@ class Agenda extends CI_Controller {
       $ext        = pathinfo($path, PATHINFO_EXTENSION);
       $filename   = "poster_{$ID_AGENDA}.{$ext}";
 
-      $config['file_name']			= $filename;
-
-      if (!is_dir($folder) || !file_exists($folder."/".$filename)) {
-        mkdir($folder, 0755, true);
-      }
-
-      $config['upload_path']    = $folder;
-      $config['allowed_types']  = '*';
-      $config['max_size']       = 2048;
-      $config['overwrite']      = true;
-
-      $this->load->library('upload', $config);
-      $this->upload->initialize($config);
-
-      if ( ! $this->upload->do_upload('POSTER')){
-        $this->session->set_flashdata('alert', 'Gagal mengupload POSTER<br><span class="text-danger">'.$this->upload->display_errors().'</span> !!');
-        header('location:' . site_url('Agenda/Tambah'));
-      }else{
-        if ($this->agenda_model->tambah_agenda($ID_AGENDA, $filename) == TRUE) {
-          $this->session->set_flashdata('success', 'Berhasil menambahkan data agenda <b>'.$JUDUL.'</b>!!');
-          header('location:' . site_url('Agenda'));
-        }else{
-          $this->session->set_flashdata('alert', 'Terjadi kesalahan saat menambahkan data agenda <b>'.$JUDUL.'</b>!!');
-          header('location:' . site_url('Agenda/Tambah'));
+      $config['file_name']      = $filename;
+      
+      if($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "gif" ||){
+        
+        if (!is_dir($folder) || !file_exists($folder."/".$filename)) {
+          mkdir($folder, 0755, true);
         }
+
+        $config['upload_path']    = $folder;
+        $config['allowed_types']  = 'png|jpg|jpeg|PNG|JPG|JPEG|gif|GIF';
+        $config['max_size']       = 2048;
+        $config['overwrite']      = true;
+
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+
+        if ( ! $this->upload->do_upload('POSTER')){
+          $this->session->set_flashdata('alert', 'Gagal mengupload POSTER<br><span class="text-danger">'.$this->upload->display_errors().'</span> !!');
+          header('location:' . site_url('Agenda/Tambah'));
+        }else{
+          if ($this->agenda_model->tambah_agenda($ID_AGENDA, $filename) == TRUE) {
+            $this->session->set_flashdata('success', 'Berhasil menambahkan data agenda <b>'.$JUDUL.'</b>!!');
+            header('location:' . site_url('Agenda'));
+          }else{
+            $this->session->set_flashdata('alert', 'Terjadi kesalahan saat menambahkan data agenda <b>'.$JUDUL.'</b>!!');
+            header('location:' . site_url('Agenda/Tambah'));
+          }
+        }
+      }else{
+        $this->session->set_flashdata('alert', 'Hanya diperbolehkan png, jpg, jpeg atau gif untuk file poster <b>'.$JUDUL.'</b>!!');
+        header('location:' . site_url('Agenda/Tambah'));
       }
     }else {
       if ($this->agenda_model->tambah_agenda($ID_AGENDA, null) == TRUE) {
@@ -127,7 +133,7 @@ class Agenda extends CI_Controller {
       $ext        = pathinfo($path, PATHINFO_EXTENSION);
       $filename   = "poster_{$ID_AGENDA}.{$ext}";
 
-      $config['file_name']			= $filename;
+      $config['file_name']      = $filename;
 
       if (!is_dir($folder) || !file_exists($folder."/".$filename)) {
         mkdir($folder, 0755, true);
