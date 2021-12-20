@@ -1,0 +1,16 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Handling Updates
+-----------------------------------------------------------------*/
+
+
+.portfolio-desc{
+  padding: 10px 5px !important;
+}
+
+.schedule-cs{
+    font-size: 24px;
+    font-weight: normal;
+}
